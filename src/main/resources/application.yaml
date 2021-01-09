@@ -2,9 +2,9 @@ spring:
   datasource:
     druid:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://127.0.0.1:3306/star_system_5114?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+      url: jdbc:mysql://127.0.0.1:3306/project_system?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
       username: root
-      password: 123456
+      password: 1175450568
       initial-size: 10
       max-active: 60
       min-idle: 5
