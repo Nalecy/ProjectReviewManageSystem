@@ -8,7 +8,9 @@ import com.nalecy.www.project.entity.po.User;
 import com.nalecy.www.project.entity.vo.UserQueryVo;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Mapper
 public interface UserMapper extends BaseMapper<User> {
@@ -73,5 +75,21 @@ public interface UserMapper extends BaseMapper<User> {
                 .in(CollectionUtils.isNotEmpty(userQueryVo.getUserIds()), User::getId, userQueryVo.getUserIds());
         Page<User> page = new Page<>(userQueryVo.getCurrent(), userQueryVo.getSize());
         return selectPage(page, queryWrapper);
+    }
+
+    /**
+     * 姓名模糊搜索用户id
+     *
+     * @param name 姓名
+     * @return List<Integer>
+     */
+    default List<Integer> selectUserIdByName(String name) {
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.lambda().select(User::getId)
+                .like(User::getName, name);
+        return selectList(queryWrapper)
+                .stream()
+                .map(User::getId)
+                .collect(Collectors.toList());
     }
 }
