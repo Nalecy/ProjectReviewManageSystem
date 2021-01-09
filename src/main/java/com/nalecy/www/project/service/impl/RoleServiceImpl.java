@@ -10,4 +10,8 @@ import com.nalecy.www.project.service.RoleService;
 @Service
 public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements RoleService{
 
+    @Override
+    public List<Role> getRoleList() {
+        return baseMapper.selectList(null);
+    }
 }

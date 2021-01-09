@@ -19,7 +19,7 @@ public interface UserRoleMapper extends BaseMapper<UserRole> {
      */
     default UserRole selectByUserId(Integer userId) {
         QueryWrapper<UserRole> queryWrapper = new QueryWrapper<>();
-        queryWrapper.lambda().select(UserRole::getRoleId)
+        queryWrapper.lambda().select(UserRole::getId, UserRole::getRoleId)
                 .eq(UserRole::getUserId, userId);
         return selectOne(queryWrapper);
     }
