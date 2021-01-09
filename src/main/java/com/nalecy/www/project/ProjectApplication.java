@@ -1,13 +1,21 @@
 package com.nalecy.www.project;
 
-import org.springframework.boot.SpringApplication;
+import com.nalecy.www.project.view.MainPageView;
+import de.felixroske.jfxsupport.AbstractFxmlView;
+import de.felixroske.jfxsupport.AbstractJavaFxApplicationSupport;
+import javafx.application.Application;
+import javafx.stage.Stage;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ProjectApplication {
+public class ProjectApplication extends AbstractJavaFxApplicationSupport {
 
     public static void main(String[] args) {
-        SpringApplication.run(ProjectApplication.class, args);
+        launch(ProjectApplication.class, MainPageView.class, args);
     }
 
+    @Override
+    public void start(Stage stage) throws Exception {
+        super.start(stage);
+    }
 }
