@@ -16,4 +16,9 @@ public class ApplyStatusConstant {
      * 2-不通过
      */
     public static final Integer NOT_PASS = 2;
+
+    /**
+     * 3-评审完成
+     */
+    public static final Integer FINISH = 3;
 }

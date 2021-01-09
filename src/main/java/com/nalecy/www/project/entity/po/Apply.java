@@ -33,7 +33,7 @@ public class Apply {
     private String reason;
 
     /**
-     * 状态 0-待评审 1-通过 2-不通过
+     * 状态 0-待评审 1-通过 2-不通过 3-评审完成
      */
     @TableField(value = "status")
     private Integer status;

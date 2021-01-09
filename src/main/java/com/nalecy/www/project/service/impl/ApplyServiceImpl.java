@@ -3,8 +3,10 @@ package com.nalecy.www.project.service.impl;
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.nalecy.www.project.constant.ApplyStatusConstant;
+import com.nalecy.www.project.constant.ProjectStatusConstant;
 import com.nalecy.www.project.dao.ProjectMapper;
 import com.nalecy.www.project.dao.UserMapper;
+import com.nalecy.www.project.entity.po.Project;
 import com.nalecy.www.project.entity.vo.ApplyQueryVo;
 import com.nalecy.www.project.entity.vo.ApplyVo;
 import org.springframework.stereotype.Service;
@@ -40,7 +42,10 @@ public class ApplyServiceImpl extends ServiceImpl<ApplyMapper, Apply> implements
         Assert.notNull(apply.getReason(), "申请理由不能为空");
 
         Assert.notNull(userMapper.selectById(apply.getUserId()), "该用户不存在");
-        Assert.notNull(projectMapper.selectById(apply.getProjectId()), "该项目不存在");
+
+        Project project = projectMapper.selectById(apply.getProjectId());
+        Assert.notNull(project, "该项目不存在");
+        Assert.isTrue(!ProjectStatusConstant.WAIT.equals(project.getStatus()), "该项目已评审");
 
         apply.setStatus(ApplyStatusConstant.WAIT);
         // 插入
