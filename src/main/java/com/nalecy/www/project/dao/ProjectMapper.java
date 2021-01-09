@@ -8,7 +8,9 @@ import com.nalecy.www.project.entity.po.Project;
 import com.nalecy.www.project.entity.vo.ProjectQueryVo;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Mapper
 public interface ProjectMapper extends BaseMapper<Project> {
@@ -32,6 +34,22 @@ public interface ProjectMapper extends BaseMapper<Project> {
                 .orderByDesc(Project::getCreateTime);
         Page<Project> page = new Page<>(projectQueryVo.getCurrent(), projectQueryVo.getSize());
         return selectPage(page, queryWrapper);
+    }
+
+    /**
+     * 项目名模糊搜索项目id
+     *
+     * @param name 项目名
+     * @return List<Integer>
+     */
+    default List<Integer> selectByName(String name) {
+        QueryWrapper<Project> queryWrapper = new QueryWrapper<>();
+        queryWrapper.lambda().select(Project::getId)
+                .like(Project::getProjectName, name);
+        return selectList(queryWrapper)
+                .stream()
+                .map(Project::getId)
+                .collect(Collectors.toList());
     }
 
 }

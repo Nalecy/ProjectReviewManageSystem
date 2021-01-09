@@ -6,9 +6,11 @@ import java.time.LocalDateTime;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import lombok.experimental.Accessors;
 
 @Data
 @EqualsAndHashCode
+@Accessors(chain = true)
 @ToString
 @TableName(value = "apply")
 public class Apply {

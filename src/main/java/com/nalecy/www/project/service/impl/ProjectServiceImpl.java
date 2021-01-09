@@ -74,6 +74,8 @@ public class ProjectServiceImpl extends ServiceImpl<ProjectMapper, Project> impl
             if(CollectionUtils.isEmpty(userIds)){
                 return new Page<ProjectVo>(projectQueryVo.getCurrent(), projectQueryVo.getSize())
                         .setRecords(Collections.emptyList());
+            }else{
+                projectQueryVo.setUserIds(userIds);
             }
         }
 
