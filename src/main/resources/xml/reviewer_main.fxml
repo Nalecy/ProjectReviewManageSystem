@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="xml.ReviewerMain">
+   <children>
+      <TableView layoutX="48.0" layoutY="43.0" prefHeight="327.0" prefWidth="292.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="C1" />
+          <TableColumn prefWidth="75.0" text="C2" />
+        </columns>
+      </TableView>
+      <Label layoutX="48.0" layoutY="28.0" text="待评审列表" />
+      <Button layoutX="451.0" layoutY="195.0" mnemonicParsing="false" text="查看详情" />
+   </children>
+</AnchorPane>

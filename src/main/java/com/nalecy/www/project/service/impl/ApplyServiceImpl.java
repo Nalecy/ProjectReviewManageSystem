@@ -9,6 +9,7 @@ import com.nalecy.www.project.dao.UserMapper;
 import com.nalecy.www.project.entity.po.Project;
 import com.nalecy.www.project.entity.vo.ApplyQueryVo;
 import com.nalecy.www.project.entity.vo.ApplyVo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.Collections;

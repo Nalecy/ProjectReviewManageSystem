@@ -1,9 +1,8 @@
 package com.nalecy.www.project;
 
-import com.nalecy.www.project.view.MainPageView;
-import de.felixroske.jfxsupport.AbstractFxmlView;
+import com.nalecy.www.project.util.ViewSwitcher;
+import com.nalecy.www.project.view.MainLoginView;
 import de.felixroske.jfxsupport.AbstractJavaFxApplicationSupport;
-import javafx.application.Application;
 import javafx.stage.Stage;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -11,11 +10,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ProjectApplication extends AbstractJavaFxApplicationSupport {
 
     public static void main(String[] args) {
-        launch(ProjectApplication.class, MainPageView.class, args);
+        launch(ProjectApplication.class, MainLoginView.class, args);
     }
 
     @Override
     public void start(Stage stage) throws Exception {
         super.start(stage);
+        ViewSwitcher.getInstance().setScene(stage);
     }
 }

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nalecy.www.project.page.RegisterPage">
+    <children>
+        <VBox alignment="CENTER" layoutX="90.0" layoutY="54.0" prefHeight="292.0" prefWidth="420.0">
+            <children>
+<!--                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">-->
+<!--                    <children>-->
+<!--                        <Label alignment="CENTER" minWidth="100.0" text="姓名" />-->
+<!--                        <TextField fx:id="nameField" minWidth="200.0" />-->
+<!--                    </children>-->
+<!--                </HBox>-->
+                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                    <children>
+                        <Label alignment="CENTER" minWidth="100.0" text="职位" textAlignment="RIGHT" />
+                        <ChoiceBox fx:id="positionBox" minWidth="200.0" prefWidth="150.0" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                    <children>
+                        <Label alignment="CENTER" minWidth="100.0" text="用户名" />
+                        <TextField fx:id="usernameField" minWidth="200.0" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                    <children>
+                        <Label alignment="CENTER" minWidth="100.0" text="性别" />
+                        <ChoiceBox fx:id="sexBox" minWidth="200.0" prefWidth="150.0" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                    <children>
+                        <Label alignment="CENTER" minWidth="100.0" text=" 电话 " />
+                        <TextField fx:id="phoneField" minWidth="200.0" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                    <children>
+                        <Label alignment="CENTER" minWidth="100.0" text="邮件" />
+                        <TextField fx:id="emailField" minWidth="200.0" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                    <children>
+                        <Label alignment="CENTER" minWidth="100.0" text="密码" />
+                        <PasswordField fx:id="passwordField" minWidth="200.0" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                    <children>
+                        <Label alignment="CENTER" minWidth="100.0" text="确认密码" />
+                        <PasswordField fx:id="passwordConfirmField" minWidth="200.0" />
+                    </children>
+                </HBox>
+                <Pane minHeight="30.0" prefWidth="200.0" />
+                <Button minWidth="100.0" mnemonicParsing="false" onAction="#onClickRegister" text="注册" />
+            </children>
+        </VBox>
+
+    </children>
+</AnchorPane>

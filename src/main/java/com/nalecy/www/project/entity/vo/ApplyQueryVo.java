@@ -29,4 +29,6 @@ public class ApplyQueryVo {
     private List<Integer> projectIds;
 
     private List<Integer> userIds;
+
+
 }
