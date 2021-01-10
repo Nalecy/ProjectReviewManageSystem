@@ -52,11 +52,11 @@ public class ReviewerApplyPage implements Initializable {
             if (selectedProject.size() > 0) {
                 ApplyVo applyVo = selectedProject.get(0);
                 Project project = projectService.getById(applyVo.getProjectId());
-                DataProvider.INSTANCE.setChooseProject(project);
+                DataProvider.INSTANCE.setChooseProject(ProjectVo.convert(project));
                 DataProvider.INSTANCE.setChooseApply(applyVo);
                 ViewSwitcher.getInstance().showFxml("/xml/reviewer_detail.fxml","项目审核",ReviewerDetailView.class);
             } else {
-                PromptAlert.display("错误", "未选择项目");
+                PromptAlert.display("错误", "未选择");
             }
         } catch (IllegalArgumentException e) {
             PromptAlert.display("错误", e.getMessage());

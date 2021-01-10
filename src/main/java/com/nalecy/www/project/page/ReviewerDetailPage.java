@@ -62,7 +62,7 @@ public class ReviewerDetailPage implements Initializable {
     @Resource
     public ReviewService reviewService;
 
-    public Project project;
+    public ProjectVo project;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

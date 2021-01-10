@@ -23,13 +23,13 @@ public enum DataProvider {
         return curUserId;
     }
 
-    private Project chooseProject = null;
+    private ProjectVo chooseProject = null;
 
-    public Project getChooseProject() {
+    public ProjectVo getChooseProject() {
         return chooseProject;
     }
 
-    public void setChooseProject(Project chooseProject) {
+    public void setChooseProject(ProjectVo chooseProject) {
         this.chooseProject = chooseProject;
     }
 

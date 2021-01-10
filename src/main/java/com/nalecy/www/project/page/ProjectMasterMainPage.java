@@ -2,6 +2,8 @@ package com.nalecy.www.project.page;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.nalecy.www.project.common.DataProvider;
+import com.nalecy.www.project.entity.po.Project;
+import com.nalecy.www.project.entity.vo.ApplyVo;
 import com.nalecy.www.project.entity.vo.ProjectQueryVo;
 import com.nalecy.www.project.entity.vo.ProjectVo;
 import com.nalecy.www.project.service.ProjectService;
@@ -9,6 +11,8 @@ import com.nalecy.www.project.util.PromptAlert;
 import com.nalecy.www.project.util.ViewSwitcher;
 import com.nalecy.www.project.view.MainLoginView;
 import com.nalecy.www.project.view.ProjectMasterSubmitView;
+import com.nalecy.www.project.view.ProjectMasterUpdateView;
+import com.nalecy.www.project.view.ReviewerDetailView;
 import de.felixroske.jfxsupport.FXMLController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -88,5 +92,36 @@ public class ProjectMasterMainPage implements Initializable {
 
     public void onClickBack(ActionEvent actionEvent) {
         ViewSwitcher.getInstance().showFxml("/xml/login.fxml","登录", MainLoginView.class);
+    }
+
+    public void onClickUpdate(ActionEvent actionEvent) {
+        try {
+            ObservableList<ProjectVo> selectedProject = allProjectTable.getSelectionModel().getSelectedItems();
+            if (selectedProject.size() > 0) {
+                ProjectVo projectVo = selectedProject.get(0);
+                DataProvider.INSTANCE.setChooseProject(projectVo);
+                ViewSwitcher.getInstance().showFxml("/xml/project_master_update.fxml","修改", ProjectMasterUpdateView.class);
+            } else {
+                PromptAlert.display("错误", "未选择项目");
+            }
+        } catch (IllegalArgumentException e) {
+            PromptAlert.display("错误", e.getMessage());
+        }
+        fetchData();
+    }
+
+    public void onClickDelete(ActionEvent actionEvent) {
+        try {
+            ObservableList<ProjectVo> selectedProject = allProjectTable.getSelectionModel().getSelectedItems();
+            if (selectedProject.size() > 0) {
+                ProjectVo projectVo = selectedProject.get(0);
+                projectService.deleteProject(projectVo.getId());
+            } else {
+                PromptAlert.display("错误", "未选择项目");
+            }
+        } catch (IllegalArgumentException e) {
+            PromptAlert.display("错误", e.getMessage());
+        }
+        fetchData();
     }
 }

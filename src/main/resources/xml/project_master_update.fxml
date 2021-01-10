@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="354.0" prefWidth="380.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nalecy.www.project.page.ProjectMasterUpdatePage">
+    <Label layoutX="50.0" layoutY="32.0" text="项目名" />
+    <TextField fx:id="projectNameField" layoutX="173.0" layoutY="28.0" />
+    <Label layoutX="62.0" layoutY="71.0" text="成员" />
+    <TextField fx:id="projectMemberField" layoutX="173.0" layoutY="67.0" />
+    <Label layoutX="38.0" layoutY="110.0" text="项目简介" />
+    <TextArea fx:id="projectAboutArea" layoutX="173.0" layoutY="110.0" prefHeight="72.0" prefWidth="161.0" />
+    <Label layoutX="38.0" layoutY="200.0" text="知识产权" />
+    <TextField fx:id="projectKnowField" layoutX="173.0" layoutY="196.0" prefHeight="23.0" prefWidth="161.0" />
+    <Label layoutX="38.0" layoutY="241.0" text="指导老师" />
+    <TextField fx:id="projectTeacherField" layoutX="173.0" layoutY="237.0" />
+    <Button fx:id="submitBtn" layoutX="141.0" layoutY="288.0" mnemonicParsing="false" onAction="#onClickUpdate" text="确认修改" />
+    <Button layoutX="40.0" layoutY="288.0" mnemonicParsing="false" text="取消" onAction="#onClickCancel" />
+</AnchorPane>
