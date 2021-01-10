@@ -62,10 +62,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         Assert.notNull(user.getPassword(), "密码不能为空");
 
         // 姓名判重
-        Assert.isTrue(userMapper.nameIsExist(user.getName()), "该姓名已存在");
+        Assert.isTrue(userMapper.nameIsNotExist(user.getName()), "该姓名已存在");
         // 如果填了手机号，手机号判重
         if (Objects.nonNull(user.getPhone())) {
-            Assert.isTrue(userMapper.phoneIsExist(user.getPhone()), "该手机号已存在");
+            Assert.isTrue(userMapper.phoneIsNotExist(user.getPhone()), "该手机号已存在");
         }
 
         // 插入用户
