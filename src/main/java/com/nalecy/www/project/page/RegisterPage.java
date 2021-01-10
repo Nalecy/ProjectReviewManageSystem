@@ -1,6 +1,7 @@
 package com.nalecy.www.project.page;
 
 import com.nalecy.www.project.ProjectApplication;
+import com.nalecy.www.project.constant.RoleConstant;
 import com.nalecy.www.project.entity.po.User;
 import com.nalecy.www.project.service.RoleService;
 import com.nalecy.www.project.service.UserRoleService;
@@ -76,13 +77,13 @@ public class RegisterPage implements Initializable {
             int id = userService.login(usernameField.getText(), passwordField.getText()).getUserId();
             switch (positionBox.getValue()) {
                 case PROJECT_MANAGER_VALUE:
-                    userRoleService.updateRole(id, 1);
+                    userRoleService.updateRole(id, RoleConstant.USER);
                     break;
                 case PROJECT_REVIEWER_VALUE:
-                    userRoleService.updateRole(id, 2);
+                    userRoleService.updateRole(id, RoleConstant.JUDGE);
                     break;
                 case PROJECT_SYS_MANAGER_VALUE:
-                    userRoleService.updateRole(id, 3);
+                    userRoleService.updateRole(id, RoleConstant.SYSTEM_MANAGER);
                     break;
             }
             PromptAlert.display("成功","注册成功");

@@ -40,14 +40,13 @@ public class ApplyServiceImpl extends ServiceImpl<ApplyMapper, Apply> implements
         Assert.notNull(apply, "申请信息不能为空");
         Assert.notNull(apply.getProjectId(), "项目id不能为空");
         Assert.notNull(apply.getUserId(), "用户id不能为空");
-        Assert.notNull(apply.getReason(), "申请理由不能为空");
+//        Assert.notNull(apply.getReason(), "申请理由不能为空");
 
         Assert.notNull(userMapper.selectById(apply.getUserId()), "该用户不存在");
 
         Project project = projectMapper.selectById(apply.getProjectId());
         Assert.notNull(project, "该项目不存在");
-        Assert.isTrue(!ProjectStatusConstant.WAIT.equals(project.getStatus()), "该项目已评审");
-
+        Assert.isTrue(ProjectStatusConstant.WAIT.equals(project.getStatus()), "该项目已评审");
         apply.setStatus(ApplyStatusConstant.WAIT);
         // 插入
         Assert.state(applyMapper.insert(apply) == 1, "系统错误");

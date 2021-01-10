@@ -6,7 +6,7 @@ package com.nalecy.www.project.constant;
 public class ProjectStatusConstant {
 
     /**
-     * 0-待审核
+     * 待审核
      */
     public static final Integer WAIT = 0;
 

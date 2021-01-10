@@ -1,6 +1,6 @@
 package com.nalecy.www.project.page;
 
-import com.nalecy.www.project.common.UserProvider;
+import com.nalecy.www.project.common.DataProvider;
 import com.nalecy.www.project.entity.po.Project;
 import com.nalecy.www.project.service.ProjectService;
 import com.nalecy.www.project.util.PromptAlert;
@@ -49,10 +49,9 @@ public class ProjectMasterApplyPage implements Initializable {
     public void onClickSubmit(ActionEvent actionEvent) {
         try {
             Project project = new Project();
-            project.setUserId(UserProvider.INSTANCE.getCurUserId());
+            project.setUserId(DataProvider.INSTANCE.getCurUserId());
             project.setIntellectual(projectKnowField.getText());
             project.setIntroduction(projectAboutArea.getText());
-            project.setStatus(0);
             project.setTeacher(projectTeacherField.getText());
             project.setMember(projectMemberField.getText());
             project.setProjectName(projectNameField.getText());

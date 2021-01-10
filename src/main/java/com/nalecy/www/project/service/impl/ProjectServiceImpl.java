@@ -7,6 +7,7 @@ import com.nalecy.www.project.dao.UserMapper;
 import com.nalecy.www.project.entity.vo.ProjectQueryVo;
 import com.nalecy.www.project.entity.vo.ProjectVo;
 import org.springframework.stereotype.Service;
+
 import javax.annotation.Resource;
 import java.util.Collections;
 import java.util.LinkedList;
@@ -20,7 +21,7 @@ import com.nalecy.www.project.service.ProjectService;
 import org.springframework.util.Assert;
 
 @Service
-public class ProjectServiceImpl extends ServiceImpl<ProjectMapper, Project> implements ProjectService{
+public class ProjectServiceImpl extends ServiceImpl<ProjectMapper, Project> implements ProjectService {
 
     @Resource
     private ProjectMapper projectMapper;
@@ -69,12 +70,11 @@ public class ProjectServiceImpl extends ServiceImpl<ProjectMapper, Project> impl
     @Override
     public Page<ProjectVo> selectProjectList(ProjectQueryVo projectQueryVo) {
         // 姓名不为空，模糊搜索
-        if(Objects.nonNull(projectQueryVo.getName())){
+        if (Objects.nonNull(projectQueryVo.getName())) {
             List<Integer> userIds = userMapper.selectUserIdByName(projectQueryVo.getName());
-            if(CollectionUtils.isEmpty(userIds)){
-                return new Page<ProjectVo>(projectQueryVo.getCurrent(), projectQueryVo.getSize())
-                        .setRecords(Collections.emptyList());
-            }else{
+            if (CollectionUtils.isEmpty(userIds)) {
+                return new Page<ProjectVo>(projectQueryVo.getCurrent(), projectQueryVo.getSize()).setRecords(Collections.emptyList());
+            } else {
                 projectQueryVo.setUserIds(userIds);
             }
         }
@@ -87,7 +87,7 @@ public class ProjectServiceImpl extends ServiceImpl<ProjectMapper, Project> impl
         result.setTotal(projectPage.getTotal());
 
         List<ProjectVo> resultList = new LinkedList<>();
-        if(CollectionUtils.isNotEmpty(projectPage.getRecords())){
+        if (CollectionUtils.isNotEmpty(projectPage.getRecords())) {
             projectPage.getRecords().forEach(project -> {
                 ProjectVo projectVo = ProjectVo.convert(project);
                 // 搜用户名

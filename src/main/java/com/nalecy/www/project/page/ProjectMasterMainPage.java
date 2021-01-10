@@ -1,8 +1,7 @@
 package com.nalecy.www.project.page;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.nalecy.www.project.common.UserProvider;
-import com.nalecy.www.project.entity.po.Project;
+import com.nalecy.www.project.common.DataProvider;
 import com.nalecy.www.project.entity.vo.ProjectQueryVo;
 import com.nalecy.www.project.entity.vo.ProjectVo;
 import com.nalecy.www.project.service.ProjectService;
@@ -20,7 +19,6 @@ import javafx.scene.control.TableView;
 
 import javax.annotation.Resource;
 import java.net.URL;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.ResourceBundle;
 
@@ -58,7 +56,8 @@ public class ProjectMasterMainPage implements Initializable {
 
     private void fetchData(){
         ProjectQueryVo query = new ProjectQueryVo();
-        query.setUserIds(Collections.singletonList(UserProvider.INSTANCE.getCurUserId()));
+        query.setSize(100);
+        query.setUserIds(Collections.singletonList(DataProvider.INSTANCE.getCurUserId()));
         Page<ProjectVo> projectVoPage = projectService.selectProjectList(query);
         ObservableList<ProjectVo> all = FXCollections.observableArrayList();
         all.addAll(projectVoPage.getRecords());

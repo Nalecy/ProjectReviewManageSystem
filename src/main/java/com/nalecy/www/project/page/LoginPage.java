@@ -1,14 +1,15 @@
 package com.nalecy.www.project.page;
 
 import com.nalecy.www.project.Constants;
-import com.nalecy.www.project.ProjectApplication;
-import com.nalecy.www.project.common.UserProvider;
+import com.nalecy.www.project.common.DataProvider;
 import com.nalecy.www.project.entity.vo.LoginVo;
 import com.nalecy.www.project.service.UserService;
 import com.nalecy.www.project.util.PromptAlert;
 import com.nalecy.www.project.util.ViewSwitcher;
 import com.nalecy.www.project.view.ProjectMasterMainView;
 import com.nalecy.www.project.view.RegisterView;
+import com.nalecy.www.project.view.ReviewerMainView;
+import com.nalecy.www.project.view.ReviewerProjectView;
 import de.felixroske.jfxsupport.FXMLController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,7 +18,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 import javax.annotation.Resource;
-import java.io.IOException;
 
 /**
  * @author nalecy
@@ -45,11 +45,11 @@ public class LoginPage {
     public void onClickLogin(ActionEvent actionEvent){
         try {
             LoginVo login = userService.login(usernameEdt.getText(), passwordEdt.getText());
-            UserProvider.INSTANCE.setCurUserId(login.getUserId());
+            DataProvider.INSTANCE.setCurUserId(login.getUserId());
             if (login.getRole().equals(Constants.PROJECT_MANAGER_VALUE)){
                 ViewSwitcher.getInstance().showFxml("/xml/project_master_main.fxml", "项目负责人", ProjectMasterMainView.class);
             }else if (login.getRole().equals(Constants.PROJECT_REVIEWER_VALUE)){
-
+                ViewSwitcher.getInstance().showFxml("/xml/reviewer_main.fxml", "项目评审员", ReviewerMainView.class);
             }else if (login.getRole().equals(Constants.PROJECT_SYS_MANAGER_VALUE)){
 
             }
