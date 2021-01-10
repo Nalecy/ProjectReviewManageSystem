@@ -7,6 +7,6 @@ import de.felixroske.jfxsupport.FXMLView;
  * @author nalecy
  * @since 2021/1/10
  */
-@FXMLView("/xml/project_master_apply.fxml")
-public class ProjectMasterApplyView extends AbstractFxmlView {
+@FXMLView("/xml/system_master_main.fxml")
+public class SystemMasterMainView extends AbstractFxmlView {
 }

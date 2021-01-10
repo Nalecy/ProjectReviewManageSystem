@@ -6,10 +6,7 @@ import com.nalecy.www.project.entity.vo.LoginVo;
 import com.nalecy.www.project.service.UserService;
 import com.nalecy.www.project.util.PromptAlert;
 import com.nalecy.www.project.util.ViewSwitcher;
-import com.nalecy.www.project.view.ProjectMasterMainView;
-import com.nalecy.www.project.view.RegisterView;
-import com.nalecy.www.project.view.ReviewerMainView;
-import com.nalecy.www.project.view.ReviewerProjectView;
+import com.nalecy.www.project.view.*;
 import de.felixroske.jfxsupport.FXMLController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -46,12 +43,16 @@ public class LoginPage {
         try {
             LoginVo login = userService.login(usernameEdt.getText(), passwordEdt.getText());
             DataProvider.INSTANCE.setCurUserId(login.getUserId());
-            if (login.getRole().equals(Constants.PROJECT_MANAGER_VALUE)){
-                ViewSwitcher.getInstance().showFxml("/xml/project_master_main.fxml", "项目负责人", ProjectMasterMainView.class);
-            }else if (login.getRole().equals(Constants.PROJECT_REVIEWER_VALUE)){
-                ViewSwitcher.getInstance().showFxml("/xml/reviewer_main.fxml", "项目评审员", ReviewerMainView.class);
-            }else if (login.getRole().equals(Constants.PROJECT_SYS_MANAGER_VALUE)){
-
+            switch (login.getRole()) {
+                case Constants.PROJECT_MANAGER_VALUE:
+                    ViewSwitcher.getInstance().showFxml("/xml/project_master_main.fxml", "项目负责人", ProjectMasterMainView.class);
+                    break;
+                case Constants.PROJECT_REVIEWER_VALUE:
+                    ViewSwitcher.getInstance().showFxml("/xml/reviewer_main.fxml", "项目评审员", ReviewerMainView.class);
+                    break;
+                case Constants.PROJECT_SYS_MANAGER_VALUE:
+                    ViewSwitcher.getInstance().showFxml("/xml/system_master_main.fxml", "系统管理员", SystemMasterMainView.class);
+                    break;
             }
         }catch (IllegalArgumentException e){
             PromptAlert.display("错误",e.getMessage());

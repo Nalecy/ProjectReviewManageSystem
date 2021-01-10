@@ -1,17 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="xml.SystemMasterMain">
+<AnchorPane prefHeight="432.0" prefWidth="741.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nalecy.www.project.page.SystemMasterMainPage">
    <children>
-      <TableView layoutX="26.0" layoutY="31.0" prefHeight="356.0" prefWidth="309.0">
-        <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
-        </columns>
+      <TableView fx:id="projectTable" layoutX="26.0" layoutY="31.0" prefHeight="356.0" prefWidth="309.0">
+          <columns>
+              <TableColumn prefWidth="75.0" text="项目名">
+                  <cellValueFactory>
+                      <PropertyValueFactory property="projectName" />
+                  </cellValueFactory>
+              </TableColumn>
+              <TableColumn prefWidth="75.0" text="成员">
+                  <cellValueFactory>
+                      <PropertyValueFactory property="member" />
+                  </cellValueFactory>
+              </TableColumn>
+              <TableColumn prefWidth="75.0" text="指导老师">
+                  <cellValueFactory>
+                      <PropertyValueFactory property="teacher" />
+                  </cellValueFactory>
+              </TableColumn>
+              <TableColumn prefWidth="75.0" text="状态">
+                  <cellValueFactory>
+                      <PropertyValueFactory property="status" />
+                  </cellValueFactory>
+              </TableColumn>
+          </columns>
       </TableView>
       <Label layoutX="26.0" layoutY="14.0" text="所有项目列表" />
+      <Button layoutX="362.0" layoutY="394.0" mnemonicParsing="false" onAction="#onClickApply" text="管理审核" />
+      <TableView fx:id="applyTable" layoutX="362.0" layoutY="31.0" prefHeight="356.0" prefWidth="350.0">
+          <columns>
+              <TableColumn prefWidth="75.0" text="项目名">
+                  <cellValueFactory>
+                      <PropertyValueFactory property="projectName" />
+                  </cellValueFactory>
+              </TableColumn>
+              <TableColumn prefWidth="75.0" text="评委姓名">
+                  <cellValueFactory>
+                      <PropertyValueFactory property="userName" />
+                  </cellValueFactory>
+              </TableColumn>
+          </columns>
+      </TableView>
+      <Label layoutX="362.0" layoutY="14.0" text="所有评审" />
+      <Button layoutX="26.0" layoutY="394.0" mnemonicParsing="false" onAction="#onClickBack" text="返回" />
+      <Button layoutX="306.0" layoutY="10.0" mnemonicParsing="false" text="刷新" onAction="#onClickRefresh"/>
    </children>
 </AnchorPane>

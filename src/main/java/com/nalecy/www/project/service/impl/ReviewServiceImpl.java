@@ -5,6 +5,7 @@ import com.nalecy.www.project.dao.ApplyMapper;
 import com.nalecy.www.project.dao.ProjectMapper;
 import com.nalecy.www.project.dao.UserMapper;
 import com.nalecy.www.project.entity.po.Apply;
+import com.nalecy.www.project.entity.po.Project;
 import com.nalecy.www.project.entity.vo.ReviewVo;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +31,9 @@ public class ReviewServiceImpl extends ServiceImpl<ReviewMapper, Review> impleme
     @Resource
     private UserMapper userMapper;
 
+    @Resource
+    private ProjectMapper projectMapper;
+
     @Override
     public ReviewVo getProjectReviewDetail(Integer projectId) {
         Assert.notNull(projectId, "项目id不能为空");
@@ -50,7 +54,7 @@ public class ReviewServiceImpl extends ServiceImpl<ReviewMapper, Review> impleme
     public boolean reviewProject(Review review, Integer status) {
         Assert.notNull(review, "评审内容不能为空");
         Assert.notNull(status, "评审操作不能为空");
-        Assert.notNull(review.getReviewContent(), "评审内容不能为空");
+//        Assert.notNull(review.getReviewContent(), "评审内容不能为空");
         Assert.notNull(review.getApplyId(), "申请表id不能为空");
 
         Assert.state(reviewMapper.insert(review) == 1, "系统错误");
@@ -58,7 +62,9 @@ public class ReviewServiceImpl extends ServiceImpl<ReviewMapper, Review> impleme
         Assert.state(applyMapper.updateById(new Apply().setId(review.getApplyId()).setStatus(ApplyStatusConstant.FINISH)) == 1,
                 "系统错误");
 
-        Assert.state(applyMapper.updateById(new Apply().setId(review.getApplyId()).setStatus(status)) == 1,
+        Integer id = projectMapper.selectById(applyMapper.selectById(review.getApplyId()).getProjectId()).getId();
+
+        Assert.state(projectMapper.updateById(new Project().setId(id).setStatus(status)) == 1,
                 "系统错误");
         return true;
     }

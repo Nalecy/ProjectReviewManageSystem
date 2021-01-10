@@ -9,6 +9,7 @@ import com.nalecy.www.project.service.UserService;
 import com.nalecy.www.project.service.impl.UserRoleServiceImpl;
 import com.nalecy.www.project.service.impl.UserServiceImpl;
 import com.nalecy.www.project.util.PromptAlert;
+import com.nalecy.www.project.util.ViewSwitcher;
 import com.nalecy.www.project.view.MainLoginView;
 import de.felixroske.jfxsupport.FXMLController;
 import de.felixroske.jfxsupport.GUIState;
@@ -87,7 +88,7 @@ public class RegisterPage implements Initializable {
                     break;
             }
             PromptAlert.display("成功","注册成功");
-            ProjectApplication.showView(MainLoginView.class);
+            ViewSwitcher.getInstance().showFxml("/xml/login.fxml","登录",MainLoginView.class);
         }catch (IllegalArgumentException e){
             PromptAlert.display("错误",e.getMessage());
         }
@@ -99,6 +100,10 @@ public class RegisterPage implements Initializable {
         positionBox.setItems(FXCollections.observableArrayList(Arrays.asList(PROJECT_MANAGER_VALUE, PROJECT_REVIEWER_VALUE, PROJECT_SYS_MANAGER_VALUE)));
         sexBox.setItems(FXCollections.observableArrayList(Arrays.asList("男", "女")));
         sexBox.setValue("男");
+    }
+
+    public void onClickBack(ActionEvent actionEvent) {
+        ViewSwitcher.getInstance().showFxml("/xml/login.fxml","登录",MainLoginView.class);
     }
 }
 

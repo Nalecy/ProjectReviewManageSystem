@@ -6,9 +6,11 @@ import java.time.LocalDateTime;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import lombok.experimental.Accessors;
 
 @Data
 @EqualsAndHashCode
+@Accessors(chain = true)
 @ToString
 @TableName(value = "project")
 public class Project {
@@ -69,6 +71,6 @@ public class Project {
     /**
      * 创建时间
      */
-    @TableField(value = "create_time", fill = FieldFill.INSERT_UPDATE)
+    @TableField(value = "create_time", fill = FieldFill.INSERT)
     private LocalDateTime createTime;
 }

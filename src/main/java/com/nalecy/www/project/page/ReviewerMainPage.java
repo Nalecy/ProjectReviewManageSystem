@@ -1,6 +1,7 @@
 package com.nalecy.www.project.page;
 
 import com.nalecy.www.project.util.ViewSwitcher;
+import com.nalecy.www.project.view.MainLoginView;
 import com.nalecy.www.project.view.ReviewerApplyView;
 import com.nalecy.www.project.view.ReviewerProjectView;
 import de.felixroske.jfxsupport.FXMLController;
@@ -19,5 +20,9 @@ public class ReviewerMainPage {
 
     public void onClickProject(ActionEvent actionEvent) {
         ViewSwitcher.getInstance().showFxml("/xml/reviewer_project.fxml", "项目评审员", ReviewerProjectView.class);
+    }
+
+    public void onClickBack(ActionEvent actionEvent) {
+        ViewSwitcher.getInstance().showFxml("/xml/login.fxml","登录", MainLoginView.class);
     }
 }

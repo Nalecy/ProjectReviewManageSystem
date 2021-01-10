@@ -3,7 +3,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="512.0" prefWidth="608.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nalecy.www.project.page.ReviewerDetailPage">
+<AnchorPane prefHeight="512.0" prefWidth="608.0" xmlns="http://javafx.com/javafx/10.0.2-internal"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nalecy.www.project.page.ReviewerDetailPage">
    <children>
       <Label layoutX="80.0" layoutY="50.0" text="项目名：" />
       <Label layoutX="32.0" layoutY="184.0" text="项目的知识产权：" />

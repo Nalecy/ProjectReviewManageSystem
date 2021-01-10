@@ -1,7 +1,9 @@
 package com.nalecy.www.project.common;
 
+import com.nalecy.www.project.entity.po.Apply;
 import com.nalecy.www.project.entity.po.Project;
 import com.nalecy.www.project.entity.po.User;
+import com.nalecy.www.project.entity.vo.ApplyVo;
 import com.nalecy.www.project.entity.vo.ProjectVo;
 
 /**
@@ -21,13 +23,23 @@ public enum DataProvider {
         return curUserId;
     }
 
-    private ProjectVo chooseProject = null;
+    private Project chooseProject = null;
 
-    public ProjectVo getChooseProject() {
+    public Project getChooseProject() {
         return chooseProject;
     }
 
-    public void setChooseProject(ProjectVo chooseProject) {
+    public void setChooseProject(Project chooseProject) {
         this.chooseProject = chooseProject;
+    }
+
+    private ApplyVo chooseApply = null;
+
+    public ApplyVo getChooseApply() {
+        return chooseApply;
+    }
+
+    public void setChooseApply(ApplyVo chooseApply) {
+        this.chooseApply = chooseApply;
     }
 }

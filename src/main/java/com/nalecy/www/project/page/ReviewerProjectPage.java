@@ -9,6 +9,8 @@ import com.nalecy.www.project.entity.vo.ProjectVo;
 import com.nalecy.www.project.service.ApplyService;
 import com.nalecy.www.project.service.ProjectService;
 import com.nalecy.www.project.util.PromptAlert;
+import com.nalecy.www.project.util.ViewSwitcher;
+import com.nalecy.www.project.view.ReviewerMainView;
 import de.felixroske.jfxsupport.FXMLController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -54,8 +56,6 @@ public class ReviewerProjectPage implements Initializable {
                         .setProjectId(projectVo.getId())
                         .setUserId(DataProvider.INSTANCE.getCurUserId())
                 );
-//            DataProvider.INSTANCE.setChooseProject(selectedProject.get(0));
-//            ViewSwitcher.getInstance().showFxml("/xml/reviewer_detail.fxml", "项目详情", ReviewerDetailView.class);
                 PromptAlert.display("成功", "申请成功");
             } else {
                 PromptAlert.display("错误", "未选择项目");
@@ -85,5 +85,9 @@ public class ReviewerProjectPage implements Initializable {
     @FXML
     public void onClickRefresh(ActionEvent actionEvent) {
         fetchData();
+    }
+
+    public void onClickBack(ActionEvent actionEvent) {
+        ViewSwitcher.getInstance().showFxml("/xml/reviewer_main.fxml", "项目评审员", ReviewerMainView.class);
     }
 }

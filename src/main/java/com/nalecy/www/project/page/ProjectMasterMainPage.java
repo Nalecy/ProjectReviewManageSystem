@@ -7,7 +7,8 @@ import com.nalecy.www.project.entity.vo.ProjectVo;
 import com.nalecy.www.project.service.ProjectService;
 import com.nalecy.www.project.util.PromptAlert;
 import com.nalecy.www.project.util.ViewSwitcher;
-import com.nalecy.www.project.view.ProjectMasterApplyView;
+import com.nalecy.www.project.view.MainLoginView;
+import com.nalecy.www.project.view.ProjectMasterSubmitView;
 import de.felixroske.jfxsupport.FXMLController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -74,7 +75,7 @@ public class ProjectMasterMainPage implements Initializable {
 
 
     public void onClickSubmit(ActionEvent actionEvent) {
-        ViewSwitcher.getInstance().showFxml("/xml/project_master_apply.fxml","申请", ProjectMasterApplyView.class);
+        ViewSwitcher.getInstance().showFxml("/xml/project_master_submit.fxml","申请", ProjectMasterSubmitView.class);
     }
 
     public void onClickHelp(ActionEvent actionEvent) {
@@ -83,5 +84,9 @@ public class ProjectMasterMainPage implements Initializable {
 
     public void onClickRefresh(ActionEvent actionEvent) {
         fetchData();
+    }
+
+    public void onClickBack(ActionEvent actionEvent) {
+        ViewSwitcher.getInstance().showFxml("/xml/login.fxml","登录", MainLoginView.class);
     }
 }

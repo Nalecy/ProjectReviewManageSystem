@@ -24,7 +24,6 @@ public class ViewSwitcher {
         return instance;
     }
 
-
     public void showFxml(String fxml,String title, Class<? extends AbstractFxmlView> newView) {
         try {
             Parent other = new FXMLLoader(getClass().getResource(fxml)).load();

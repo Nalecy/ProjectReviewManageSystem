@@ -4,7 +4,7 @@
 <?import javafx.scene.control.cell.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="415.0" prefWidth="413.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nalecy.www.project.page.ReviewerMainPage">
+<AnchorPane prefHeight="415.0" prefWidth="413.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nalecy.www.project.page.ReviewerProjectPage">
    <children>
       <TableView fx:id="pendingTable" layoutX="48.0" layoutY="43.0" prefHeight="321.0" prefWidth="292.0">
           <columns>
@@ -38,6 +38,7 @@
       <Label layoutX="48.0" layoutY="28.0" text="待评审列表" />
        <Button fx:id="detailBtn" layoutX="162.0" layoutY="377.0" mnemonicParsing="false" onAction="#onClickDetail" text="申请审批" />
        <Button fx:id="refreshBtn" layoutX="320.0" layoutY="14.0" mnemonicParsing="false" onAction="#onClickRefresh" text="刷新" />
+      <Button layoutX="48.0" layoutY="377.0" mnemonicParsing="false" text="返回" onAction="#onClickBack"/>
 
    </children>
 </AnchorPane>

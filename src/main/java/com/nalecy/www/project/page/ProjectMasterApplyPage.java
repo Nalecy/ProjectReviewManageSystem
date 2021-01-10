@@ -68,4 +68,9 @@ public class ProjectMasterApplyPage implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
     }
+
+    public void onClickCancel(ActionEvent actionEvent) {
+        ViewSwitcher.getInstance().showFxml("/xml/project_master_main.fxml", "项目负责人", ProjectMasterMainView.class);
+
+    }
 }

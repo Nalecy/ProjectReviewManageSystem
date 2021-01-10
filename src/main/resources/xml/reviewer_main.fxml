@@ -3,11 +3,10 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nalecy.www.project.page.ReviewerMainPage">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nalecy.www.project.page.ReviewerMainPage">
    <children>
-      <Button fx:id="applyBtn" layoutX="345.0" layoutY="177.0" mnemonicParsing="false" text="查看评审" onAction="#onClickApply"/>
-      <Button fx:id="projectBtn" layoutX="125.0" layoutY="177.0" mnemonicParsing="false" text="查看项目" onAction="#onClickProject"/>
+      <Button fx:id="applyBtn" layoutX="236.0" layoutY="177.0" mnemonicParsing="false" onAction="#onClickApply" text="查看评审" />
+      <Button fx:id="projectBtn" layoutX="125.0" layoutY="177.0" mnemonicParsing="false" onAction="#onClickProject" text="查看项目" />
+      <Button layoutX="369.0" layoutY="177.0" mnemonicParsing="false" text="返回" onAction="#onClickBack" />
    </children>
 </AnchorPane>
