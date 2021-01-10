@@ -37,12 +37,12 @@ public interface UserMapper extends BaseMapper<User> {
      * @param name 姓名
      * @return 是否已存在
      */
-    default boolean nameIsExist(String name) {
+    default boolean nameIsNotExist(String name) {
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
         queryWrapper.lambda()
                 .select(User::getId)
                 .eq(User::getName, name);
-        return selectOne(queryWrapper) != null;
+        return selectOne(queryWrapper) == null;
     }
 
     /**
@@ -51,12 +51,12 @@ public interface UserMapper extends BaseMapper<User> {
      * @param phone 手机
      * @return 是否已存在
      */
-    default boolean phoneIsExist(String phone) {
+    default boolean phoneIsNotExist(String phone) {
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
         queryWrapper.lambda()
                 .select(User::getId)
                 .eq(User::getPhone, phone);
-        return selectOne(queryWrapper) != null;
+        return selectOne(queryWrapper) == null;
     }
 
     /**
