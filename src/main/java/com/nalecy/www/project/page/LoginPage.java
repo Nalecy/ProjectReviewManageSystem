@@ -7,6 +7,7 @@ import com.nalecy.www.project.entity.vo.LoginVo;
 import com.nalecy.www.project.service.UserService;
 import com.nalecy.www.project.util.PromptAlert;
 import com.nalecy.www.project.util.ViewSwitcher;
+import com.nalecy.www.project.view.ProjectMasterMainView;
 import com.nalecy.www.project.view.RegisterView;
 import de.felixroske.jfxsupport.FXMLController;
 import javafx.event.ActionEvent;
@@ -46,7 +47,7 @@ public class LoginPage {
             LoginVo login = userService.login(usernameEdt.getText(), passwordEdt.getText());
             UserProvider.INSTANCE.setCurUserId(login.getUserId());
             if (login.getRole().equals(Constants.PROJECT_MANAGER_VALUE)){
-
+                ViewSwitcher.getInstance().showFxml("/xml/project_master_main.fxml", "项目负责人", ProjectMasterMainView.class);
             }else if (login.getRole().equals(Constants.PROJECT_REVIEWER_VALUE)){
 
             }else if (login.getRole().equals(Constants.PROJECT_SYS_MANAGER_VALUE)){
@@ -59,7 +60,7 @@ public class LoginPage {
 
     @FXML
     public void onClickRegister(ActionEvent actionEvent) {
-        ViewSwitcher.getInstance().showFxml("/xml/register.fxml", "",RegisterView.class);
+        ViewSwitcher.getInstance().showFxml("/xml/register.fxml", "注册",RegisterView.class);
     }
 
 }
